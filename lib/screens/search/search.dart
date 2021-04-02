@@ -1,46 +1,17 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:rccar/screens/search/widgets/car_list.dart';
+import 'package:rccar/screens/search/widgets/connection_selector.dart';
 
-enum ConnectionEnum { Wifi, Bluetooth }
-
-class SearchScreen extends StatefulWidget {
-  @override
-  _SearchScreenState createState() => _SearchScreenState();
-}
-
-class _SearchScreenState extends State<SearchScreen> {
-  ConnectionEnum connection = ConnectionEnum.Wifi;
-
+class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: new SafeArea(
-        child: Column(
-      children: <Widget>[
-        RadioListTile<ConnectionEnum>(
-          title: const Text('Wifi'),
-          value: ConnectionEnum.Wifi,
-          groupValue: connection,
-          onChanged: (ConnectionEnum value) {
-            setState(() {
-              connection = value;
-            });
-          },
-        ),
-        RadioListTile<ConnectionEnum>(
-          title: const Text('Bluetooth'),
-          value: ConnectionEnum.Bluetooth,
-          groupValue: connection,
-          onChanged: (ConnectionEnum value) {
-            setState(() {
-              connection = value;
-            });
-          },
-        ),
-      ],
-    ),
-    ),
+    return Container(
+      child: Column(
+        children: [
+          ConnectionSelector(),
+          CarList()
+        ],
+      ),      
     );
   }
 }
