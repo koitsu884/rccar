@@ -6,17 +6,18 @@ class CarList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<CarListProvider>(
-      builder: (ctx, provider, _) => Stack(
-        children: [
-          ListView.builder(
-            itemCount: provider.carList.length,
-            itemBuilder: (BuildContext ctx, int index) {
-              return Text(provider.carList[index].name);
-            }
-          ),
-          provider.isLoading ? Text('loading...') : SizedBox(height: 0.0),
-        ],
-        ),
+      builder: (ctx, provider, _) => ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: provider.carList.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: () => Navigator.pushNamed(context, '/controller'),
+              child: Card(
+                child: ListTile(title: Text(provider.carList[index])),
+              ),
+            );
+          }),
     );
   }
 }

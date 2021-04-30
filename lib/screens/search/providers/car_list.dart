@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rccar/models/car.dart';
 
 class CarListProvider with ChangeNotifier {
-  List<Car> _carList = [];
+  List<String> _carList = ['a', 'b'];
   bool _loading = false;
 
   //------ Getter --------
-  List<Car> get carList => [..._carList];
+  List<String> get carList => [..._carList];
   bool get isLoading => _loading;
 
   Future<void> findCar(bool bluetooth) async {
@@ -16,12 +16,12 @@ class CarListProvider with ChangeNotifier {
     //------ Find car (via wifi or bluetooth, maybe using api) logic here ------
     if (bluetooth) {
       _carList = [
-        new Car(name: 'Test_bt')
+        'test'
       ];
     } else {
       _carList = [
-        new Car(name: 'Test_wifi_1'),
-        new Car(name: 'Test_wifi_2')
+        'test1',
+        'test2'
       ];
     }
 
