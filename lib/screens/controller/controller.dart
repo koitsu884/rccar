@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rccar/screens/controller/widgets/stream_video_viewer.dart';
+import 'package:rccar/screens/controller/widgets/user_interfaces.dart';
 
 class ControllerScreen extends StatelessWidget {
   @override
@@ -7,13 +9,13 @@ class ControllerScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Controller'),
       ),
-      body: OrientationBuilder(builder: (context, orientation) {
-        return Container(
-          child: orientation == Orientation.portrait
-              ? Text('ababa')
-              : Text('abobo'),
-        );
-      }),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          StreamVideoViewer(),
+          UserInterfaces(),
+        ],
+      ),
     );
   }
 }
